@@ -1,2 +1,2 @@
 # Cris-Brew-PoSS
-LoginGUI for PoSS system
+BASIC Cafe PoSS 
