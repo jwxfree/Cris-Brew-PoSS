@@ -49,7 +49,7 @@ public class Loginpos extends JFrame {
 
 	
 	public Loginpos() {
-		setTitle("Cris Brew");
+		setTitle("Cris Brew test");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 761, 576);
 		contentPane = new JPanel();
