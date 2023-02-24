@@ -70,7 +70,7 @@ public class Menu extends JFrame {
 		int RistrettoM = 170;
 		int RistrettoL = 190;
 		int FlatwhiteM = 170;
-		int FlatwhileL = 190;
+		int FlatwhiteL = 190;
 		int AffogatoM = 180;
 		int AffogatoL = 200;
 		int VanillaM = 150;
@@ -230,7 +230,26 @@ public class Menu extends JFrame {
 				else if(TAPrice.getText().equals("FWhite")) {
 					TAPrice.append(" Hot ");
 				}
-
+				else if(TAPrice.getText().equals("Affgt")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Vnlla")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Crtdo")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Mtcha")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Cppccno")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Enspnnr")) {
+					TAPrice.append(" Hot ");
+				}
+				
+				
 				
 			};
 		});
@@ -242,19 +261,61 @@ public class Menu extends JFrame {
 		pref_hot_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton pref_cold_btn = new JButton("Cold");
+		pref_cold_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(TAPrice.getText().equals("Amrcn")){
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Xprss")) {
+					TAPrice.append(" Error - Please Clear! ");
+				}
+				else if(TAPrice.getText().equals("ChcLatte")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Mccht")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Rsttrt")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("FWhite")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Affgt")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Vnlla")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Crtdo")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Mtcha")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Cppccno")) {
+					TAPrice.append(" Cold ");
+				}
+				else if(TAPrice.getText().equals("Enspnnr")) {
+					TAPrice.append(" Cold ");
+				}
+			}
+		});
 		pref_cold_btn.setBorderPainted(false);
 		pref_cold_btn.setBackground(new Color(121, 193, 253));
 		pref_cold_btn.setBounds(155, 44, 104, 38);
 		panel_2.add(pref_cold_btn);
 		pref_cold_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		// container pang store ng multiplied values inside if else statement//
+		// list/container pang store ng multiplied values inside if else statement//
 		List<Integer> results = new ArrayList<Integer>();
 		
 		JButton medium_btn = new JButton("Medium");
 		medium_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 int tp = 0;
+				 
+				 //HOT SECTOR MEDIUM
 				 if(TAPrice.getText().equals("Amrcn Hot ")) {
 					 int qtyval = Integer.parseInt(TFQty.getText());
 					 tp = qtyval * AmericanoM;
@@ -263,6 +324,11 @@ public class Menu extends JFrame {
 				 else if(TAPrice.getText().equals("Xprss Hot ")){
 					 int qtyval = Integer.parseInt(TFQty.getText());
 					 tp = qtyval * EspressoM;
+					 TAPrice.append(" Medium          "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mccht Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MacchiatoM;
 					 TAPrice.append(" Medium          "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
 				 }
 				 else if(TAPrice.getText().equals("ChcLatte Hot ")){
@@ -277,9 +343,105 @@ public class Menu extends JFrame {
 				 }
 				 else if(TAPrice.getText().equals("FWhite Hot ")){
 					 int qtyval = Integer.parseInt(TFQty.getText());
-					 tp = qtyval * RistrettoM;
+					 tp = qtyval * FlatwhiteM;
 					 TAPrice.append(" Medium        "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
 				 }
+				 else if(TAPrice.getText().equals("Affgt Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AffogatoM;
+					 TAPrice.append(" Medium             "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Vnlla Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * VanillaM;
+					 TAPrice.append(" Medium            "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Crtdo Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CortadoM;
+					 TAPrice.append(" Medium           "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mtcha Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MatchaM;
+					 TAPrice.append(" Medium          "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Cppccno Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CappuccinoM;
+					 TAPrice.append(" Medium     "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Enspnnr Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EinspannerM;
+					 TAPrice.append(" Medium     "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 
+				 
+				 // MEDIUM SECTOR COLD ===========================================================
+				 if(TAPrice.getText().equals("Amrcn Cold ")) {
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AmericanoM;
+					 TAPrice.append(" Medium       "+ qtyval + "                " + "\u20b1 " +  tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Xprss Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EspressoM;
+					 TAPrice.append(" Medium        "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mccht Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MacchiatoM;
+					 TAPrice.append(" Medium        "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("ChcLatte Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * LatteM;
+					 TAPrice.append(" Medium  "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Rsttrt Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * RistrettoM;
+					 TAPrice.append(" Medium         "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("FWhite Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * FlatwhiteM;
+					 TAPrice.append(" Medium      "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Affgt Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AffogatoM;
+					 TAPrice.append(" Medium           "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Vnlla Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * VanillaM;
+					 TAPrice.append(" Medium          "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Crtdo Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CortadoM;
+					 TAPrice.append(" Medium         "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mtcha Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MatchaM;
+					 TAPrice.append(" Medium        "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Cppccno Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CappuccinoM;
+					 TAPrice.append(" Medium   "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Enspnnr Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EinspannerM;
+					 TAPrice.append(" Medium   "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 
+				 
+				 
 				TFTotalPrice.setText(TFTotalPrice.getText()+tp);
 				results.add(tp);
 			}
@@ -290,6 +452,136 @@ public class Menu extends JFrame {
 		medium_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton large_btn = new JButton("Large");
+		large_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int tp = 0;
+				// LARGE HOT SECTOR =================================================================
+				if(TAPrice.getText().equals("Amrcn Hot ")) {
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AmericanoL;
+					 TAPrice.append(" Large             "+ qtyval + "                " + "\u20b1 " +  tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Xprss Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EspressoL;
+					 TAPrice.append(" Large              "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mccht Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MacchiatoL;
+					 TAPrice.append(" Large              "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("ChcLatte Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * LatteL;
+					 TAPrice.append(" Large        "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Rsttrt Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * RistrettoL;
+					 TAPrice.append(" Large               "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("FWhite Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * FlatwhiteL;
+					 TAPrice.append(" Large            "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Affgt Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AffogatoL;
+					 TAPrice.append(" Large                 "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Vnlla Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * VanillaL;
+					 TAPrice.append(" Large                "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Crtdo Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CortadoL;
+					 TAPrice.append(" Large               "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mtcha Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MatchaL;
+					 TAPrice.append(" Large              "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Cppccno Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CappuccinoL;
+					 TAPrice.append(" Large         "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Enspnnr Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EinspannerL;
+					 TAPrice.append(" Large         "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				
+				// LARGE COLD SECTOR =============================================================
+				if(TAPrice.getText().equals("Amrcn Cold ")) {
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AmericanoL;
+					 TAPrice.append(" Large           "+ qtyval + "                " + "\u20b1 " +  tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Xprss Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EspressoL;
+					 TAPrice.append(" Large            "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mccht Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MacchiatoL;
+					 TAPrice.append(" Large            "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("ChcLatte Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * LatteL;
+					 TAPrice.append(" Large      "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Rsttrt Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * RistrettoL;
+					 TAPrice.append(" Large             "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("FWhite Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * FlatwhiteL;
+					 TAPrice.append(" Large          "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Affgt Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AffogatoL;
+					 TAPrice.append(" Large               "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Vnlla Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * VanillaL;
+					 TAPrice.append(" Large              "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Crtdo Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CortadoL;
+					 TAPrice.append(" Large             "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Mtcha Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * MatchaL;
+					 TAPrice.append(" Large            "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Cppccno Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * CappuccinoL;
+					 TAPrice.append(" Large       "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Enspnnr Cold ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EinspannerL;
+					 TAPrice.append(" Large       "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				TFTotalPrice.setText(TFTotalPrice.getText()+tp);
+				results.add(tp);
+			}
+		});
 		large_btn.setBackground(new Color(183, 150, 38));
 		large_btn.setBounds(155, 120, 104, 38);
 		panel_2.add(large_btn);
@@ -338,6 +630,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TAOrders.setText(null);
 				TFTotalPrice.setText(null);
+				results.clear();
 				
 			}
 		});
@@ -362,6 +655,11 @@ public class Menu extends JFrame {
 		panel_3.setLayout(null);
 		
 		JButton eins_btn = new JButton("Einspänner");
+		eins_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Enspnnr");
+			}
+		});
 		eins_btn.setBounds(479, 342, 157, 47);
 		panel_3.add(eins_btn);
 		eins_btn.setIcon(new ImageIcon(einspanner));
@@ -369,6 +667,11 @@ public class Menu extends JFrame {
 		eins_btn.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		JButton cappu_btn = new JButton("Cappuccino");
+		cappu_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Cppccno");
+			}
+		});
 		cappu_btn.setBounds(258, 342, 157, 47);
 		panel_3.add(cappu_btn);
 		cappu_btn.setIcon(new ImageIcon(cappucino));
@@ -376,6 +679,11 @@ public class Menu extends JFrame {
 		cappu_btn.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		JButton matcha_btn = new JButton("Matcha");
+		matcha_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Mtcha");
+			}
+		});
 		matcha_btn.setBounds(36, 342, 157, 47);
 		panel_3.add(matcha_btn);
 		matcha_btn.setIcon(new ImageIcon(matcha));
@@ -384,6 +692,11 @@ public class Menu extends JFrame {
 		matcha_btn.setBackground(new Color(211, 211, 211));
 		
 		JButton Cortado_btn = new JButton(" Cortado");
+		Cortado_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Crtdo");
+			}
+		});
 		Cortado_btn.setHorizontalAlignment(SwingConstants.LEADING);
 		Cortado_btn.setBounds(479, 251, 157, 47);
 		panel_3.add(Cortado_btn);
@@ -405,6 +718,11 @@ public class Menu extends JFrame {
 		flat_btn.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		JButton van_btn = new JButton("Vanilla ");
+		van_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Vnlla");
+			}
+		});
 		van_btn.setBounds(258, 251, 157, 47);
 		panel_3.add(van_btn);
 		van_btn.setIcon(new ImageIcon(vanilla));
@@ -445,6 +763,11 @@ public class Menu extends JFrame {
 		macchiato_btn.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		JButton affo_btn = new JButton("Affogato");
+		affo_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Affgt");
+			}
+		});
 		affo_btn.setBounds(36, 251, 157, 47);
 		panel_3.add(affo_btn);
 		affo_btn.setIcon(new ImageIcon(affogato));
