@@ -1,15 +1,41 @@
 package PoSS;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.SoftBevelBorder;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+
+
 
 public class Menu extends JFrame {
 	private Image crisbrew = new ImageIcon(Menu.class.getResource("/res/crissbrew.png")).getImage().getScaledInstance(200,200,Image.SCALE_SMOOTH);
@@ -30,7 +56,10 @@ public class Menu extends JFrame {
 	private final JPanel panel = new JPanel();
 	private JTextField TFTotalPrice;
 	private JTextField TFQty;
+	private JTextArea TAOrders;
 
+
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,7 +73,28 @@ public class Menu extends JFrame {
 		});
 	}
 
-
+	private void PrintReceipt() {
+		String format = "CRIS BREW\nDasmariñas, Cavite";
+		String order = TAOrders.getText();
+		Document rcp = new Document();
+		try {
+            PdfWriter.getInstance(rcp, new FileOutputStream(new File("order.pdf")));
+            rcp.open();
+            Paragraph title = new Paragraph(format);
+            title.setAlignment(Element.ALIGN_CENTER);
+            rcp.add(title);
+            
+            Paragraph listoforder = new Paragraph(order);
+            listoforder.setAlignment(Element.ALIGN_JUSTIFIED);
+            rcp.add(listoforder);
+            
+      
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            rcp.close();
+        }
+    }
 		
 		
 	
@@ -85,6 +135,8 @@ public class Menu extends JFrame {
 		int EinspannerL = 190;
 		
 		JTextArea TAPrice = new JTextArea();
+		TAPrice.setRows(10);
+		TAPrice.setColumns(20);
 		TAPrice.setLineWrap(true);
 		TAPrice.setEditable(false);
 		TAPrice.setBounds(594, 477, 243, 174);
@@ -161,21 +213,14 @@ public class Menu extends JFrame {
 		TFTotalPrice.setBounds(68, 473, 195, 28);
 		panel_1.add(TFTotalPrice);
 		
-		JButton confirm_btn = new JButton("Confirm");
-		confirm_btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Receipt rcp = new Receipt();
-				rcp.setVisible(true);
-			}
-		});
-		confirm_btn.setBackground(new Color(14, 184, 107));
-		confirm_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
-		confirm_btn.setBounds(161, 595, 102, 47);
-		panel_1.add(confirm_btn);
-		
-		JTextArea TAOrders = new JTextArea();
+		TAOrders = new JTextArea();
+		TAOrders.setColumns(20);
+		TAOrders.setRows(10);
+		TAOrders.setEditable(false);
 		TAOrders.setBounds(10, 86, 253, 379);
 		panel_1.add(TAOrders);
+		
+
 		
 
 		
@@ -587,16 +632,6 @@ public class Menu extends JFrame {
 		panel_2.add(large_btn);
 		large_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Size:");
-		lblNewLabel_1_1.setBounds(10, 97, 122, 13);
-		panel_2.add(lblNewLabel_1_1);
-		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
-		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Quantity:");
-		lblNewLabel_1_1_1.setBounds(40, 178, 92, 29);
-		panel_2.add(lblNewLabel_1_1_1);
-		lblNewLabel_1_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
-		
 		TFQty = new JTextField();
 		TFQty.setFont(new Font("Tahoma", Font.BOLD, 12));
 		TFQty.setHorizontalAlignment(SwingConstants.CENTER);
@@ -624,6 +659,31 @@ public class Menu extends JFrame {
 		add_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		add_btn.setBounds(740, 666, 102, 31);
 		contentPane.add(add_btn);
+		
+
+		JButton confirm_btn = new JButton("Confirm");
+		confirm_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrintReceipt();
+				
+				
+			}
+		});
+		confirm_btn.setBackground(new Color(14, 184, 107));
+		confirm_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		confirm_btn.setBounds(161, 595, 102, 47);
+		panel_1.add(confirm_btn);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Size:");
+		lblNewLabel_1_1.setBounds(10, 97, 122, 13);
+		panel_2.add(lblNewLabel_1_1);
+		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("Quantity:");
+		lblNewLabel_1_1_1.setBounds(40, 178, 92, 29);
+		panel_2.add(lblNewLabel_1_1_1);
+		lblNewLabel_1_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
+		
 		
 		JButton clear_btn = new JButton("Clear");
 		clear_btn.addActionListener(new ActionListener() {

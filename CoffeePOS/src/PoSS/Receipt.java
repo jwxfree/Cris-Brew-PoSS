@@ -17,6 +17,9 @@ import javax.swing.JTextField;
 import java.awt.TextField;
 import java.awt.Image;
 import javax.swing.JTextArea;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
 public class Receipt extends JFrame {
 
 	private JPanel contentPane;
@@ -37,10 +40,7 @@ public class Receipt extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public Receipt() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1182, 768);
@@ -63,12 +63,13 @@ public class Receipt extends JFrame {
 		panel_2.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(452, 582, 251, 34);
+		textField.setEditable(false);
+		textField.setBounds(475, 587, 251, 34);
 		panel_2.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Total:");
-		lblNewLabel_3.setBounds(359, 582, 83, 30);
+		lblNewLabel_3.setBounds(382, 582, 83, 39);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 27));
 		panel_2.add(lblNewLabel_3);
 		
@@ -92,10 +93,6 @@ public class Receipt extends JFrame {
 		lblNewLabel_7.setBounds(566, 131, 82, 34);
 		panel_2.add(lblNewLabel_7);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setBounds(83, 106, 622, 440);
-		panel_2.add(textArea);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(611, 9, 1, 1);
@@ -121,5 +118,11 @@ public class Receipt extends JFrame {
 		lblNewLabel_2.setBounds(0, 0, 387, 731);
 		panel.add(lblNewLabel_2);
 		
+		JTextArea TAFinalOrder = new JTextArea();
+		TAFinalOrder.setEditable(false);
+		TAFinalOrder.setBounds(61, 181, 665, 390);
+		panel_2.add(TAFinalOrder);
+		
 	}
+
 }
