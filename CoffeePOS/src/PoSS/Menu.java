@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
@@ -33,6 +34,9 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import javax.swing.JSpinner;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 
 
 
@@ -57,6 +61,7 @@ public class Menu extends JFrame {
 	private JTextField TFTotalPrice;
 	private JTextField TFQty;
 	private JTextArea TAOrders;
+	private JTextField TFOrderNum;
 
 
 	
@@ -74,19 +79,34 @@ public class Menu extends JFrame {
 	}
 
 	private void PrintReceipt() {
-		String format = "CRIS BREW\nDasmariñas, Cavite";
-		String order = TAOrders.getText();
-		Document rcp = new Document();
-		try {
-            PdfWriter.getInstance(rcp, new FileOutputStream(new File("order.pdf")));
+        String format = "CRIS BREW\nDasmariñas, Cavite";
+        String hline = "\n---------------------------------------------------------------"
+                + "\nItem Name                     QTY              Price\n"
+                + "---------------------------------------------------------------";
+        String order = TAOrders.getText() + "\n---------------------------------------------------------------";
+        String total = "\n                                          Total:          " + TFTotalPrice.getText();
+        
+        
+        
+        Document rcp = new Document();
+        try {
+        	PdfWriter.getInstance(rcp, new FileOutputStream(new File("order"+ TFOrderNum.getText()+".pdf")));
             rcp.open();
             Paragraph title = new Paragraph(format);
             title.setAlignment(Element.ALIGN_CENTER);
             rcp.add(title);
             
+            Paragraph headline = new Paragraph(hline);
+            headline.setAlignment(Element.ALIGN_CENTER);
+            rcp.add(headline);
+            
             Paragraph listoforder = new Paragraph(order);
-            listoforder.setAlignment(Element.ALIGN_JUSTIFIED);
+            listoforder.setAlignment(Element.ALIGN_CENTER);
             rcp.add(listoforder);
+            
+            Paragraph totaloforder = new Paragraph(total);
+            totaloforder.setAlignment(Element.ALIGN_CENTER);
+            rcp.add(totaloforder);
             
       
         } catch (Exception ex) {
@@ -665,6 +685,7 @@ public class Menu extends JFrame {
 		confirm_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PrintReceipt();
+				JOptionPane.showMessageDialog(null, "Order Complete");
 				
 				
 			}
@@ -697,6 +718,20 @@ public class Menu extends JFrame {
 		clear_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		clear_btn.setBounds(161, 525, 102, 47);
 		panel_1.add(clear_btn);
+		
+		JLabel lblOrderNum = new JLabel("Order Number");
+		lblOrderNum.setHorizontalAlignment(SwingConstants.CENTER);
+		lblOrderNum.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
+		lblOrderNum.setBounds(10, 573, 129, 25);
+		panel_1.add(lblOrderNum);
+		
+		TFOrderNum = new JTextField();
+		TFOrderNum.setFont(new Font("Tahoma", Font.BOLD, 19));
+		TFOrderNum.setText("1");
+		TFOrderNum.setHorizontalAlignment(SwingConstants.CENTER);
+		TFOrderNum.setBounds(20, 597, 112, 45);
+		panel_1.add(TFOrderNum);
+		TFOrderNum.setColumns(10);
 		
 		JButton btnClearPrice = new JButton("Clear");
 		btnClearPrice.addActionListener(new ActionListener() {
