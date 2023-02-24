@@ -2,6 +2,8 @@ package PoSS;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -22,18 +24,13 @@ public class Menu extends JFrame {
 	private Image flatwhite = new ImageIcon(Menu.class.getResource("/res/flatwhite.png")).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH);
 	private Image matcha = new ImageIcon(Menu.class.getResource("/res/matcha.png")).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH);
 	private Image ristretto1 = new ImageIcon(Menu.class.getResource("/res/ristretto1.png")).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH);
-	private Image ristretto2 = new ImageIcon(Menu.class.getResource("/res/ristretto122.png")).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH);
 	private Image vanilla = new ImageIcon(Menu.class.getResource("/res/vanil.png")).getImage().getScaledInstance(40,40,Image.SCALE_SMOOTH);
 
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
-	private JTextField price_txtfld;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField TFTotalPrice;
+	private JTextField TFQty;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,9 +44,10 @@ public class Menu extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
+		
+		
+	
 	public Menu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1182, 768);
@@ -61,7 +59,43 @@ public class Menu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		int AmericanoM = 100;
+		int AmericanoL = 120;
+		int EspressoM = 120;
+		int EspressoL = 140;
+		int LatteM = 150;
+		int LatteL = 170;
+		int MacchiatoM = 170;
+		int MacchiatoL = 190;
+		int RistrettoM = 170;
+		int RistrettoL = 190;
+		int FlatwhiteM = 170;
+		int FlatwhileL = 190;
+		int AffogatoM = 180;
+		int AffogatoL = 200;
+		int VanillaM = 150;
+		int VanillaL = 170;
+		int CortadoM = 170;
+		int CortadoL = 190;
+		int MatchaM = 170;
+		int MatchaL = 190;
+		int CappuccinoM = 120;
+		int CappuccinoL = 140;
+		int EinspannerM = 170;
+		int EinspannerL = 190;
+		
+		JTextArea TAPrice = new JTextArea();
+		TAPrice.setLineWrap(true);
+		TAPrice.setEditable(false);
+		TAPrice.setBounds(594, 477, 243, 174);
+		contentPane.add(TAPrice);
+		
 		JButton latte_btn = new JButton("Choco latte");
+		latte_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("ChcLatte");
+			}
+		});
 		latte_btn.setBackground(new Color(211, 211, 211));
 		latte_btn.setIcon(new ImageIcon(mocha));
 		latte_btn.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -117,20 +151,15 @@ public class Menu extends JFrame {
 		separator_1.setBounds(10, 77, 253, 19);
 		panel_1.add(separator_1);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(10, 95, 254, 357);
-		panel_1.add(textField);
-		
 		JLabel lblNewLabel_1_2_1 = new JLabel("Total:");
 		lblNewLabel_1_2_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
 		lblNewLabel_1_2_1.setBounds(10, 476, 122, 25);
 		panel_1.add(lblNewLabel_1_2_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(68, 473, 195, 28);
-		panel_1.add(textField_1);
+		TFTotalPrice = new JTextField();
+		TFTotalPrice.setColumns(10);
+		TFTotalPrice.setBounds(68, 473, 195, 28);
+		panel_1.add(TFTotalPrice);
 		
 		JButton confirm_btn = new JButton("Confirm");
 		confirm_btn.addActionListener(new ActionListener() {
@@ -144,15 +173,18 @@ public class Menu extends JFrame {
 		confirm_btn.setBounds(161, 595, 102, 47);
 		panel_1.add(confirm_btn);
 		
-		JButton clear_btn = new JButton("Clear");
-		clear_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
-		clear_btn.setBounds(161, 525, 102, 47);
-		panel_1.add(clear_btn);
+		JTextArea TAOrders = new JTextArea();
+		TAOrders.setBounds(10, 86, 253, 379);
+		panel_1.add(TAOrders);
+		
+
 		
 		JLabel lblOrderSummary = new JLabel("Order Summary");
 		lblOrderSummary.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 22));
 		lblOrderSummary.setBounds(49, 10, 201, 40);
 		panel_1.add(lblOrderSummary);
+		
+	
 		
 		JLabel lblNewLabel = new JLabel("Beverages:");
 		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 22));
@@ -175,7 +207,33 @@ public class Menu extends JFrame {
 		panel_2.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
 		
+		
+		
 		JButton pref_hot_btn = new JButton("Hot");
+		pref_hot_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(TAPrice.getText().equals("Amrcn")){
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Xprss")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("ChcLatte")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Mccht")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("Rsttrt")) {
+					TAPrice.append(" Hot ");
+				}
+				else if(TAPrice.getText().equals("FWhite")) {
+					TAPrice.append(" Hot ");
+				}
+
+				
+			};
+		});
 		pref_hot_btn.setBorderPainted(false);
 		pref_hot_btn.setBorder(new LineBorder(new Color(254, 104, 104), 0, true));
 		pref_hot_btn.setBackground(new Color(255, 104, 104));
@@ -190,7 +248,42 @@ public class Menu extends JFrame {
 		panel_2.add(pref_cold_btn);
 		pref_cold_btn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
+		// container pang store ng multiplied values inside if else statement//
+		List<Integer> results = new ArrayList<Integer>();
+		
 		JButton medium_btn = new JButton("Medium");
+		medium_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int tp = 0;
+				 if(TAPrice.getText().equals("Amrcn Hot ")) {
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * AmericanoM;
+					 TAPrice.append(" Medium         "+ qtyval + "                " + "\u20b1 " +  tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Xprss Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * EspressoM;
+					 TAPrice.append(" Medium          "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("ChcLatte Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * LatteM;
+					 TAPrice.append(" Medium    "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("Rsttrt Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * RistrettoM;
+					 TAPrice.append(" Medium           "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				 else if(TAPrice.getText().equals("FWhite Hot ")){
+					 int qtyval = Integer.parseInt(TFQty.getText());
+					 tp = qtyval * RistrettoM;
+					 TAPrice.append(" Medium        "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+				 }
+				TFTotalPrice.setText(TFTotalPrice.getText()+tp);
+				results.add(tp);
+			}
+		});
 		medium_btn.setBackground(new Color(226, 192, 101));
 		medium_btn.setBounds(10, 120, 104, 38);
 		panel_2.add(medium_btn);
@@ -208,29 +301,59 @@ public class Menu extends JFrame {
 		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Quantity:");
-		lblNewLabel_1_1_1.setBounds(100, 178, 122, 24);
+		lblNewLabel_1_1_1.setBounds(40, 178, 92, 29);
 		panel_2.add(lblNewLabel_1_1_1);
 		lblNewLabel_1_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(208, 175, 42, 38);
-		panel_2.add(spinner);
-		
-		price_txtfld = new JTextField();
-		price_txtfld.setBounds(594, 487, 254, 158);
-		contentPane.add(price_txtfld);
-		price_txtfld.setColumns(10);
-		
+		TFQty = new JTextField();
+		TFQty.setFont(new Font("Tahoma", Font.BOLD, 12));
+		TFQty.setHorizontalAlignment(SwingConstants.CENTER);
+		TFQty.setText("1");
+		TFQty.setBounds(130, 181, 104, 28);
+		panel_2.add(TFQty);
+		TFQty.setColumns(10);
+	
 		JButton add_btn = new JButton("Add");
+		add_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String totalorder = TAOrders.getText() + TAPrice.getText();
+				TAOrders.setText(totalorder);
+				
+				int total = 0;
+				for(int i = 0; i <results.size(); i++) {
+					total+=results.get(i);
+				}
+				
+				TFTotalPrice.setText(String.valueOf(total));
+				TAPrice.setText(null);
+			}
+		});
 		add_btn.setBackground(new Color(14, 184, 107));
 		add_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		add_btn.setBounds(740, 666, 102, 31);
 		contentPane.add(add_btn);
 		
-		JButton cancel_btn = new JButton("Cancel");
-		cancel_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
-		cancel_btn.setBounds(594, 666, 102, 31);
-		contentPane.add(cancel_btn);
+		JButton clear_btn = new JButton("Clear");
+		clear_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAOrders.setText(null);
+				TFTotalPrice.setText(null);
+				
+			}
+		});
+		clear_btn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		clear_btn.setBounds(161, 525, 102, 47);
+		panel_1.add(clear_btn);
+		
+		JButton btnClearPrice = new JButton("Clear");
+		btnClearPrice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.setText(null);
+			}
+		});
+		btnClearPrice.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnClearPrice.setBounds(594, 666, 102, 31);
+		contentPane.add(btnClearPrice);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(177, 165, 150));
@@ -270,6 +393,11 @@ public class Menu extends JFrame {
 		Cortado_btn.setBackground(new Color(211, 211, 211));
 		
 		JButton flat_btn = new JButton("Flat White");
+		flat_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("FWhite");
+			}
+		});
 		flat_btn.setBounds(479, 168, 157, 47);
 		panel_3.add(flat_btn);
 		flat_btn.setIcon(new ImageIcon(flatwhite));
@@ -292,6 +420,11 @@ public class Menu extends JFrame {
 		ristr_btn.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		JButton espresso_btn = new JButton("Espresso");
+		espresso_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Xprss");
+			}
+		});
 		espresso_btn.setBounds(258, 83, 157, 47);
 		panel_3.add(espresso_btn);
 		espresso_btn.setIcon(new ImageIcon(espresso));
@@ -305,6 +438,7 @@ public class Menu extends JFrame {
 		macchiato_btn.setForeground(new Color(75, 55, 43));
 		macchiato_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Mccht");
 			}
 		});
 		macchiato_btn.setBackground(new Color(211, 211, 211));
@@ -326,15 +460,20 @@ public class Menu extends JFrame {
 		americano_btn.setFont(new Font("Tahoma", Font.BOLD, 13));
 		americano_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Amrcn");
 			}
 		});
 		ristr_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				TAPrice.append("Rsttrt");
 			}
+			
 		});
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(895, 0, 1, 2);
 		contentPane.add(separator_2);
+		
+		
 	}
 }
