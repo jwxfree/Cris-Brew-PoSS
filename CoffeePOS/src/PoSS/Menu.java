@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,18 +24,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import javax.swing.JSpinner;
-import java.awt.event.ContainerAdapter;
-import java.awt.event.ContainerEvent;
 
 
 
@@ -85,13 +76,14 @@ public class Menu extends JFrame {
                 + "---------------------------------------------------------------";
         String order = TAOrders.getText() + "\n---------------------------------------------------------------";
         String total = "\n                                          Total:          " + TFTotalPrice.getText();
-        
-        
+       
+
         
         Document rcp = new Document();
         try {
         	PdfWriter.getInstance(rcp, new FileOutputStream(new File("order"+ TFOrderNum.getText()+".pdf")));
             rcp.open();
+    
             Paragraph title = new Paragraph(format);
             title.setAlignment(Element.ALIGN_CENTER);
             rcp.add(title);
@@ -404,7 +396,7 @@ public class Menu extends JFrame {
 				 else if(TAPrice.getText().equals("Rsttrt Hot ")){
 					 int qtyval = Integer.parseInt(TFQty.getText());
 					 tp = qtyval * RistrettoM;
-					 TAPrice.append(" Medium           "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
+					 TAPrice.append(" Medium            "+ qtyval + "                " + "\u20b1 " + tp+ "\n");
 				 }
 				 else if(TAPrice.getText().equals("FWhite Hot ")){
 					 int qtyval = Integer.parseInt(TFQty.getText());
